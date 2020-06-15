@@ -1,13 +1,15 @@
 import React, { useContext, useState } from 'react';
 import './style.css';
+import { BillContext } from '../../Context/BillContext';
 
 const AddBill = () => {
     const [BillTitle, setBillTitle] = useState('');
     const [BillCost, setBillCost] = useState('');
 
-    const updateBills = () => {
-        console.log(BillTitle, BillCost)
-    }
+    // const updateBills = () => {
+    //     console.log(BillTitle, BillCost)
+    // }
+    const { updateBills } = useContext(BillContext)
 
     const billObjectValid = () => {
         // BillCost is truthy and is a number
@@ -37,7 +39,11 @@ const AddBill = () => {
             <button className='add-bill-form-control btn btn-primary'
                 onClick={() => {
                     if (billObjectValid()) {
-                        updateBills ();
+                        updateBills({
+                            title: BillTitle,
+                            monthlyCost: BillCost
+                        }
+                        );
                         clearForm();
                     }
                 }}> Add Bill</button>
