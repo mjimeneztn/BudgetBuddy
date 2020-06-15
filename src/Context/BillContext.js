@@ -3,6 +3,7 @@ import React, { useState, createContext, useEffect, Component } from 'react';
 const BillContext = createContext();
 
 const BillProvider = ({ children }) => {
+
     const [bills, setBills] = useState([]);
 
 
@@ -20,8 +21,8 @@ const BillProvider = ({ children }) => {
             ...bills,
             bill
         ];
-        localStorage.setItem('my-bills', JSON.stringify(updateBills));
-        setBills(updateBills)
+        localStorage.setItem('my-bills', JSON.stringify(updatedBills));
+        setBills(updatedBills)
     };
     return (
         <BillContext.Provider value={{

@@ -41,9 +41,9 @@ const AddBill = () => {
                     if (billObjectValid()) {
                         updateBills({
                             title: BillTitle,
-                            monthlyCost: BillCost
-                        }
-                        );
+                            monthlyCost: BillCost,
+                            enabled: true
+                        });
                         clearForm();
                     }
                 }}> Add Bill</button>
