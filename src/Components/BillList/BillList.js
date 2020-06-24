@@ -13,7 +13,8 @@ const BillList = () => {
                 bills.map((bill, index) => {
                  return(
                  <div key={index} className='bill-list-row'>
-                     <input type="checkbox" className='form-check-input'>
+                     <input type="checkbox" className='form-check-input'
+                     checked={bill.enabled}>
 
                      </input>
                 <div className='bill-list-row-content'>
