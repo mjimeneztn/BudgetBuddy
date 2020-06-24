@@ -6,7 +6,7 @@ import { BillContext } from '../../Context/BillContext';
 const BillList = () => {
 
 
-    const { bills } = useContext(BillContext);
+    const { bills, editBill } = useContext(BillContext);
     return (
         <div className='bill-list-container'>
             {
@@ -14,11 +14,17 @@ const BillList = () => {
                  return(
                  <div key={index} className='bill-list-row'>
                      <input type="checkbox" className='form-check-input'
-                     checked={bill.enabled}>
+                     checked={bill.enabled}
+                     onChange={()=> editBill({
+                         title: bill.title,
+                        monthlyCost: bill.monthlyCost,
+                        enabled: !bill.enabled
+                     })}>
+
 
                      </input>
                 <div className='bill-list-row-content'>
-                    {bill.title} - ${bill.monthlycost}
+                    {bill.title} - ${bill.monthlyCost}
                 </div>
             </div>
 
