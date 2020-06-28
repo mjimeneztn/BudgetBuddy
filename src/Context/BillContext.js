@@ -5,6 +5,7 @@ const BillContext = createContext();
 const BillProvider = ({ children }) => {
 
     const [bills, setBills] = useState([]);
+    const [selectedCostInterval, setSelectedCostInterval]= useState('Monthly');
 
 
     useEffect(() => {
@@ -47,7 +48,9 @@ const BillProvider = ({ children }) => {
         <BillContext.Provider value={{
             bills,
             updateBills,
-            editBill
+            editBill,
+            selectedCostInterval,
+            setSelectedCostInterval
         }}>
             {children}
         </BillContext.Provider>
