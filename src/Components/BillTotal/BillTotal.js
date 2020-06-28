@@ -37,6 +37,18 @@ const { bills, selectedCostInterval} = useContext(BillContext);
             }
         </span>
     </div>
+    <div className='total-saved-container'>
+        {selectedCostInterval} saved:
+        <span className='total-saved'>
+            {
+                '$' + bills.reduce((acc, val)=>{
+                    return !val.enabled ?
+                    moneyIntervalTransform(val.monthlyCost) + acc:
+                    acc;
+                },0).toFixed(2)
+            }
+        </span>
+    </div>
 
     </>);
 
