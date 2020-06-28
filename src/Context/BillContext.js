@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect, Component } from 'react';
+import React, { useState, createContext, useEffect} from 'react';
 
 const BillContext = createContext();
 
@@ -6,6 +6,7 @@ const BillProvider = ({ children }) => {
 
     const [bills, setBills] = useState([]);
     const [selectedCostInterval, setSelectedCostInterval]= useState('Monthly');
+    const [editModeEnabled, setEditModeEnabled]= useState(false);
 
 
     useEffect(() => {
@@ -13,9 +14,7 @@ const BillProvider = ({ children }) => {
     }, [setBills]);
 
 
-    useEffect(() => {
-        console.log(bills)
-    }, [bills])
+
 
     const updateBills = (bill) => {
         const updatedBills = [
@@ -42,7 +41,11 @@ const BillProvider = ({ children }) => {
         setBills(updatedBills)
     };
 
-
+    const deleteBill = (billToDelete)=> {
+        const updatedBills = bills.filter((bill) => bill.title !== billToDelete.title);
+        localStorage.setItem('my-bills', JSON.stringify(updatedBills));
+        setBills(updatedBills)
+    };
 
     return (
         <BillContext.Provider value={{
@@ -50,7 +53,11 @@ const BillProvider = ({ children }) => {
             updateBills,
             editBill,
             selectedCostInterval,
-            setSelectedCostInterval
+            setSelectedCostInterval,
+            setEditModeEnabled,
+            editModeEnabled,
+            deleteBill
+
         }}>
             {children}
         </BillContext.Provider>

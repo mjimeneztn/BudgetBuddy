@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './Components/App/App';
+import {BillProvider} from './Context/BillContext'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
+  <React.StrictMode><BillProvider>
+    <App></App>
+  </BillProvider>
+
   </React.StrictMode>,
   document.getElementById('oreo-mini')
 );

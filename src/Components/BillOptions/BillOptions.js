@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import './style.css';
 import { BillContext } from '../../Context/BillContext';
 

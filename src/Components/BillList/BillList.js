@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import './style.css';
 import { BillContext } from '../../Context/BillContext';
 
@@ -6,9 +6,10 @@ import { BillContext } from '../../Context/BillContext';
 const BillList = () => {
 
 
-    const { bills, editBill } = useContext(BillContext);
+    const { bills, editBill,setEditModeEnabled } = useContext(BillContext);
     return (
         <div className='bill-list-container'>
+            <h6 className='edit-mode-btn' onClick={()=> setEditModeEnabled(true)}>EDIT</h6>
             {
                 bills.map((bill, index) => {
                  return(

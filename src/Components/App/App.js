@@ -1,21 +1,30 @@
-import React from 'react';
+import React, {useContext}from 'react';
 import './App.css';
 import AddBill from '../AddBills/AddBill';
-import { BillProvider } from '../../Context/BillContext';
+import {  BillContext } from '../../Context/BillContext';
 import BillList from '../BillList/BillList';
 import BillTotal from '../BillTotal/BillTotal';
 import BillOptions from '../BillOptions/BillOptions';
+import EditBills from '../EditBills/EditBills';
 
 // changed function component to arrow function. prefer es6 syntax
 const App = () => {
+  const {editModeEnabled}= useContext(BillContext)
   return (
  <div className='budget-container'>
-   <BillProvider>
-     <BillOptions></BillOptions>
-     <AddBill />
-     <BillTotal></BillTotal>
-     <BillList />
-     </BillProvider>
+
+
+
+     {
+       editModeEnabled ? <EditBills /> :  <span>
+       <BillOptions></BillOptions>
+       <AddBill></AddBill>
+       <BillTotal></BillTotal>
+       <BillList></BillList>
+
+     </span>
+     }
+
 
 </div>
 

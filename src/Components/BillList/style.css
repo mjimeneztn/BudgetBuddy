@@ -12,3 +12,9 @@
     display: inline-block;
 
 }
+.edit-mode-btn {
+    cursor: pointer;
+}
+.edit-mode-btn:hover{
+    color: blue;
+}
